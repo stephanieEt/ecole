@@ -1,0 +1,63 @@
+.carousel-container {
+    position: relative;
+
+    .container-title {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1; // Assure que le titre est au-dessus des images
+        //background-color: rgb(11 76 77 / 28%); // Optionnel, rend le fond du titre semi-transparent
+        color: white; // Change la couleur du texte pour plus de contraste
+        margin-top: 140px;
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            font-family: cursive;
+            line-height: 2;
+
+            // Pour les écrans de taille moyenne
+            @media (max-width: 1200px) {
+                font-size: 2.5rem; // Réduire un peu la taille du texte
+            }
+
+            // Pour les tablettes
+            @media (max-width: 768px) {
+                font-size: 2rem; // Taille de texte plus petite
+                padding: 15px; // Ajuster les marges et le padding
+            }
+
+            // Pour les petits écrans et les mobiles
+            @media (max-width: 576px) {
+                font-size: 1.5rem; // Réduire davantage la taille du texte
+                line-height: 1.5; // Diminuer l'espacement entre les lignes
+                padding: 10px; // Moins de padding pour les petits écrans
+            }
+
+            // Pour les très petits écrans
+            @media (max-width: 360px) {
+                font-size: 1.2rem; // Encore plus petit pour les très petits appareils
+                margin-top: 100px; // Ajuster la marge pour les petits écrans
+            }
+        }
+    }
+
+
+
+    .carousel {
+        position: relative;
+
+        .carousel-item {
+            img {
+                width: 100%; // S'assure que l'image prend toute la largeur du carrousel
+                height: 770px; // Définir une hauteur fixe pour toutes les images
+                object-fit: cover; // Redimensionner les images pour couvrir le conteneur tout en conservant les proportions
+            }
+        }
+    }
+}

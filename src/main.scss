@@ -1,0 +1,27 @@
+@use "./sass/footer";
+@use "./sass/header";
+@use "./sass/accueil";
+@use"./sass/infos";
+@use"./sass/ecole";
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; // S'assurer que l'application prend toute la hauteur de la fenêtre
+}
+
+.page-content {
+    flex: 1; // Le contenu occupe l'espace disponible entre le header et le footer
+
+}
+
+.container-footer {
+    text-align: center;
+}

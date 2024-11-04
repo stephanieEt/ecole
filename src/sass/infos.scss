@@ -1,0 +1,36 @@
+.infos-page {
+    display: flex;
+    justify-content: center; // Centre horizontalement
+    align-items: center; // Centre verticalement
+    height: 90vh; // Prend toute la hauteur de la fenêtre
+    background-color: #48dbfb; // Fond léger pour plus de lisibilité
+
+
+    ul {
+        list-style-type: none; // Supprime les puces de la liste
+        padding: 0;
+        text-align: center; // Centre le texte dans les éléments de la liste
+        gap: 20px;
+        display: flex;
+        flex-direction: column;
+
+        li {
+            margin-bottom: 15px; // Espacement entre les éléments de la liste
+
+            a {
+                text-decoration: none;
+                font-size: 18px; // Taille de texte un peu plus grande
+                color: #333; // Couleur sombre pour le texte
+                padding: 10px 20px; // Padding autour du lien pour le rendre plus interactif
+                background-color: #f3b4b4; // Fond léger pour les liens
+                border-radius: 15px; // Bords arrondis pour un effet plus doux
+                transition: background-color 0.3s, color 0.3s;
+
+                &:hover {
+                    background-color: #007bff; // Couleur de fond au survol
+                    color: white; // Couleur du texte au survol
+                }
+            }
+        }
+    }
+}

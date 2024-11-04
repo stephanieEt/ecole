@@ -1,0 +1,25 @@
+.ecole {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // Centre verticalement
+    align-items: center; // Centre horizontalement
+    min-height: 90vh; // Prend toute la hauteur de la fenêtre
+    padding: 20px;
+    background-color: #feca57;
+    gap: 20px;
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    ul {
+
+        padding: 0;
+
+        li {
+            margin-bottom: 10px;
+            font-size: 18px; // Ajuste la taille du texte pour une meilleure lisibilité
+            line-height: 2.6; // Espacement entre les lignes pour plus de clarté
+        }
+    }
+}
