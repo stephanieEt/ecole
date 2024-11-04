@@ -1,22 +1,48 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 const Ecole = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:1337/api/ecoles", {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
+          },
+        });
+        setData(response.data.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="ecole">
       <h1>L'école</h1>
-      <ul>
-        <li>
-          L’école accueille les enfants 4 jours par semaine : lundi, mardi,
-          jeudi et vendredi.
-        </li>
-        <li>Horaires : 9h00 / 12h00 ; 13h30 / 16h45.</li>
-        <li>
-          Cantine municipale : 2,90 euros (renseignements et inscriptions auprès
-          de la mairie).
-        </li>
-        <li>
-          Accueil périscolaire intercommunal (renseignements et inscriptions
-          auprès de la communauté de communes).
-        </li>
-      </ul>
+      {loading && <p>Chargement...</p>}
+      {error && <p>Erreur: {error.message}</p>}
+      {data && data.length > 0 && (
+        <div>
+          {data.map((item) => (
+            <div key={item.id}>
+              {item.info.map((infoItem, index) => (
+                <p key={index} className="text large-text custom-spacing">
+                  {infoItem.children[0].text}
+                </p>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

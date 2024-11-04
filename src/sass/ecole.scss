@@ -1,25 +1,31 @@
+$background-color: #feca57;
+
 .ecole {
     display: flex;
     flex-direction: column;
-    justify-content: center; // Centre verticalement
-    align-items: center; // Centre horizontalement
-    min-height: 90vh; // Prend toute la hauteur de la fenêtre
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
     padding: 20px;
-    background-color: #feca57;
+    background-color: $background-color;
     gap: 20px;
 
     h1 {
         margin-bottom: 20px;
+        font-size: 3em; // Taille personnalisée pour le titre
     }
 
-    ul {
+    // Texte principal de l'école
+    .text {
 
-        padding: 0;
+        color: #333;
 
-        li {
-            margin-bottom: 10px;
-            font-size: 18px; // Ajuste la taille du texte pour une meilleure lisibilité
-            line-height: 2.6; // Espacement entre les lignes pour plus de clarté
+        &.large-text {
+            font-size: 22px;
+        }
+
+        &.custom-spacing {
+            line-height: 2.5;
         }
     }
 }
