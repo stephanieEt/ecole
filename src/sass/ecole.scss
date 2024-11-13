@@ -19,6 +19,12 @@ $background-color: #feca57;
     .text {
 
         color: #333;
+        margin-left: 20vh;
+
+        @media (max-width: 1024px) {
+            margin-left: 0;
+
+        }
 
         &.large-text {
             font-size: 22px;

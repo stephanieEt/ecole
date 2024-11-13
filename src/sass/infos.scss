@@ -1,35 +1,48 @@
+$primary-color: #333;
+$secondary-color: #feca57;
+$font-size-base: 18px;
+
 .infos-page {
     display: flex;
-    justify-content: center; // Centre horizontalement
-    align-items: center; // Centre verticalement
-    height: 90vh; // Prend toute la hauteur de la fenêtre
-    background-color: #48dbfb; // Fond léger pour plus de lisibilité
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+
+    h1 {
+        color: $primary-color;
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+
+    .loading,
+    .error {
+        font-size: 1.1em;
+        color: darken($secondary-color, 10%);
+        margin-bottom: 20px;
+    }
+
+    .infos-content {
+        width: 100%;
+        max-width: 600px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgb(0 0 0 / 62%);
+        background-color: #48dbfb;
+
+        .info-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
 
 
-    ul {
-        list-style-type: none; // Supprime les puces de la liste
-        padding: 0;
-        text-align: center; // Centre le texte dans les éléments de la liste
-        gap: 20px;
-        display: flex;
-        flex-direction: column;
-
-        li {
-            margin-bottom: 15px; // Espacement entre les éléments de la liste
-
-            a {
-                text-decoration: none;
-                font-size: 18px; // Taille de texte un peu plus grande
-                color: #333; // Couleur sombre pour le texte
-                padding: 10px 20px; // Padding autour du lien pour le rendre plus interactif
-                background-color: #f3b4b4; // Fond léger pour les liens
-                border-radius: 15px; // Bords arrondis pour un effet plus doux
-                transition: background-color 0.3s, color 0.3s;
-
-                &:hover {
-                    background-color: #007bff; // Couleur de fond au survol
-                    color: white; // Couleur du texte au survol
-                }
+            p {
+                font-size: $font-size-base;
+                line-height: 1.6;
+                color: darken($primary-color, 15%);
             }
         }
     }
