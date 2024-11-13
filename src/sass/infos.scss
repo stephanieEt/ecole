@@ -1,36 +1,80 @@
+$primary-color: #333;
+$secondary-color: #feca57;
+$font-size-base: 22px;
+
 .infos-page {
+    position: relative;
     display: flex;
-    justify-content: center; // Centre horizontalement
-    align-items: center; // Centre verticalement
-    height: 90vh; // Prend toute la hauteur de la fenêtre
-    background-color: #48dbfb; // Fond léger pour plus de lisibilité
+    flex-direction: column;
+    justify-content: center; // Centre le contenu verticalement
+    align-items: center; // Centre le contenu horizontalement
+    min-height: 100vh; // Occupe toute la hauteur de la fenêtre
+    height: 100vh;
+    padding: 20px;
+    color: white; // Couleur du texte
 
+    // Pseudo-élément pour l'image de fond en fondu
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('./assets/images/photoinfo1.jpg'); // Remplace par ton chemin d'image
+        background-size: cover; // L'image couvre toute la zone
+        background-position: center; // Centrer l'image
+        background-repeat: no-repeat;
+        opacity: 0.7; // Opacité pour l'effet de fondu
+        z-index: -1; // Met l'image en arrière-plan
+    }
 
-    ul {
-        list-style-type: none; // Supprime les puces de la liste
-        padding: 0;
-        text-align: center; // Centre le texte dans les éléments de la liste
-        gap: 20px;
-        display: flex;
-        flex-direction: column;
+    h1 {
+        color: $primary-color;
+        font-size: 2em;
+        margin-bottom: 1em;
+        text-align: center;
+        width: 100%; // S'assurer que le texte s'étend jusqu'au bord gauche
+    }
 
-        li {
-            margin-bottom: 15px; // Espacement entre les éléments de la liste
+    .loading,
+    .error {
+        font-size: 1.1em;
+        color: darken($secondary-color, 10%);
+        margin-bottom: 20px;
+        text-align: left; // Aligner le texte à gauche pour les messages de chargement et d'erreur
+    }
 
-            a {
-                text-decoration: none;
-                font-size: 18px; // Taille de texte un peu plus grande
-                color: #333; // Couleur sombre pour le texte
-                padding: 10px 20px; // Padding autour du lien pour le rendre plus interactif
-                background-color: #f3b4b4; // Fond léger pour les liens
-                border-radius: 15px; // Bords arrondis pour un effet plus doux
-                transition: background-color 0.3s, color 0.3s;
+    .infos-content {
+        width: 100%;
+        max-width: 600px;
+        padding: 20px;
 
-                &:hover {
-                    background-color: #007bff; // Couleur de fond au survol
-                    color: white; // Couleur du texte au survol
-                }
+        .info-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: flex-start; // Aligner les éléments enfants à gauche
+
+            p {
+                font-size: $font-size-base;
+                line-height: 1.6;
+                color: darken($primary-color, 15%);
+                text-align: left; // Aligner le texte à gauche dans les paragraphes
             }
+        }
+    }
+
+    @media (max-width: 768px) {
+        &::before {
+            background-size: cover; // S'assurer que l'image soit visible sans être coupée sur les petits écrans
+            background-position: center center;
+        }
+
+        h1 {
+            font-size: 1.5em; // Réduire la taille du titre sur les petits écrans
         }
     }
 }

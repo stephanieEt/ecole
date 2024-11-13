@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Infos = () => {
-  const [data, setData] = useState([]);
+const Equipe = () => {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -10,7 +10,7 @@ const Infos = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1337/api/infos-pratiques",
+          "http://localhost:1337/api/equipe-educatives",
           {
             headers: {
               Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
@@ -29,20 +29,21 @@ const Infos = () => {
   }, []);
 
   return (
-    <div className="infos-page">
-      <h1>Informations Pratiques</h1>
-
-      {loading && <p className="loading">Chargement des informations...</p>}
-      {error && <p className="error">Erreur : {error.message}</p>}
-
-      {/* Affichage des informations pratiques */}
+    <div className="equipe">
+      <h1>L'équipe Éducative</h1>
+      {loading && <p>Chargement...</p>}
+      {error && <p>Erreur: {error.message}</p>}
       {data && data.length > 0 && (
-        <div className="infos-content">
+        <div>
           {data.map((item) => (
-            <div key={item.id} className="info-item">
-              {item.info.map((infoItem, index) => (
-                <p key={index}>{infoItem.children[0].text}</p>
-              ))}
+            <div key={item.id}>
+              <div className="equipe-details">
+                {item.Equipe.split("\n").map((line, index) => (
+                  <p key={index} className="text large-text custom-spacing">
+                    {line.trim() || <br />}
+                  </p>
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -51,4 +52,4 @@ const Infos = () => {
   );
 };
 
-export default Infos;
+export default Equipe;
