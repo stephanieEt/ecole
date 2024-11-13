@@ -26,8 +26,8 @@ const Header = () => {
             <NavLink to="/Infos">Infos pratiques</NavLink>
           </li>
           <li>
-            <a href="#associations">Equipe éducative</a>
-          </li>{" "}
+            <NavLink to="/Equipe">Equipe éducative</NavLink>
+          </li>
           <li>
             <a href="#associations">Associations</a>
           </li>{" "}

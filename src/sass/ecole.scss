@@ -1,29 +1,42 @@
-$background-color: #feca57;
+$primary-color: #333;
 
 .ecole {
+    position: relative; // Nécessaire pour positionner l'image en arrière-plan
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 90vh;
     padding: 20px;
-    background-color: $background-color;
     gap: 20px;
+
+    // Pseudo-élément pour l'image en fondu
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('./assets/images/photoecole.jpg'); // Remplace par ton chemin d'image
+        background-size: cover; // L'image couvre toute la zone
+        background-position: center; // Centrer l'image
+        opacity: 0.4; // Appliquer un fondu à l'image de fond
+        z-index: -1; // Met l'image en arrière-plan, sous le contenu
+    }
 
     h1 {
         margin-bottom: 20px;
         font-size: 3em; // Taille personnalisée pour le titre
+        color: #070000; // Mettre le texte en blanc pour contraster avec l'image
     }
 
-    // Texte principal de l'école
     .text {
-
-        color: #333;
+        color: $primary-color;
         margin-left: 20vh;
 
         @media (max-width: 1024px) {
             margin-left: 0;
-
         }
 
         &.large-text {
