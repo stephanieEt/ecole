@@ -6,6 +6,7 @@ import Ecole from "./components/pages/Ecole";
 import Infos from "./components/pages/Infos";
 import Equipe from "./components/pages/Equipe";
 import Association from "./components/pages/Association";
+import Contact from "./components/pages/Contact";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/Infos" element={<Infos />} />
             <Route path="/Equipe" element={<Equipe />} />
             <Route path="/Associations" element={<Association />} />
+            <Route path="/Contact" element={<Contact />} />
           </Routes>
         </div>
         <Footer />

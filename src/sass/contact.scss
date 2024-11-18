@@ -1,0 +1,92 @@
+.contact-container {
+    position: relative;
+    /* Nécessaire pour le pseudo-élément */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centre verticalement */
+    align-items: center;
+    /* Centre horizontalement */
+    height: 100vh;
+    /* Hauteur pleine page */
+    padding: 20px;
+    /* Évite que le contenu touche les bords */
+    text-align: center;
+    /* Centre le texte dans chaque élément */
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        /* S'assure que la largeur couvre toute la page */
+        height: 100%;
+        /* S'assure que la hauteur couvre toute la page */
+        background-image: url('./assets/images/photocontact.jpg');
+        /* Chemin correct de l'image */
+        background-size: cover;
+        /* L'image couvre toute la zone */
+        background-position: center;
+        /* Centrer l'image */
+        background-repeat: no-repeat;
+        /* Évite la répétition de l'image */
+        opacity: 0.5;
+        /* Appliquer un fondu à l'image de fond */
+        z-index: -1;
+        /* Place l'image sous le contenu */
+    }
+
+    h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        color: #050000;
+        /* Assurez-vous que le texte est visible sur l'image */
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin: 0.5rem 0;
+            font-size: 2rem;
+            color: #0b0000;
+            /* Assurez-vous que le texte est visible sur l'image */
+
+            a {
+                color: #785169;
+                text-decoration: none;
+
+                &:hover {
+                    color: #da5eef;
+                }
+            }
+
+            strong {
+                font-weight: bold;
+            }
+        }
+    }
+
+    /* Media Queries pour les écrans plus petits */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2rem;
+        }
+
+        li {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        li {
+            font-size: 1rem;
+        }
+    }
+}
