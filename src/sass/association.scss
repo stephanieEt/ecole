@@ -1,0 +1,99 @@
+.association-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centre verticalement */
+    align-items: center;
+    /* Centre horizontalement */
+
+    padding: 20px;
+    /* Ajout d’un padding pour éviter que le contenu ne touche les bords sur les petits écrans */
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('./assets/images/photoassociation.jpg'); // Remplace par ton chemin d'image
+        background-size: cover; // L'image couvre toute la zone
+        background-position: center; // Centrer l'image
+        opacity: 0.4; // Appliquer un fondu à l'image de fond
+        z-index: -1; // Met l'image en arrière-plan, sous le contenu
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        /* Taille du titre */
+        margin-bottom: 13rem;
+        padding-top: 5rem
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin: 1rem 0;
+
+            button {
+                font-size: 1.2rem;
+                color: blue;
+                background: none;
+                border: none;
+                cursor: pointer;
+                text-decoration: underline;
+
+                &:hover {
+                    color: darkblue;
+                }
+            }
+
+            p {
+                font-size: 1rem;
+                margin-top: 0.5rem;
+                color: #333;
+            }
+        }
+    }
+}
+
+/* Media Queries pour les écrans plus petits */
+@media (max-width: 768px) {
+    .association-container {
+        padding: 10px;
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        ul li {
+            button {
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .association-container {
+        h1 {
+            font-size: 1.8rem;
+        }
+
+        ul li {
+            button {
+                font-size: 0.9rem;
+            }
+
+            p {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
