@@ -23,19 +23,20 @@
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         margin-bottom: 1rem;
         color: #0a0000; // Couleur du titre pour contraste avec le fond
     }
 
     .equipe-details {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         line-height: 1.6;
         color: #0b0000; // Couleur du texte pour un contraste lisible
         max-width: 600px;
         text-align: left;
         padding: 0 1rem;
         white-space: pre-line;
+        font-weight: bold;
 
         p {
             margin: 0.5rem 0;

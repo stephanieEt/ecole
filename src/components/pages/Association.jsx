@@ -6,7 +6,7 @@ const Association = () => {
 
   // Récupération des données depuis l'API avec le token
   useEffect(() => {
-    fetch("http://localhost:1337/api/associations", {
+    fetch(`${import.meta.env.VITE_BASE_URL}/api/associations`, {
       headers: {
         Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`, // En-tête d'autorisation
       },

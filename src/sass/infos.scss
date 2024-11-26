@@ -1,4 +1,4 @@
-$primary-color: #333;
+$primary-color:#070000;
 $secondary-color: #feca57;
 $font-size-base: 22px;
 
@@ -6,7 +6,6 @@ $font-size-base: 22px;
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center; // Centre le contenu verticalement
     align-items: center; // Centre le contenu horizontalement
     min-height: 100vh; // Occupe toute la hauteur de la fenêtre
     height: 100vh;
@@ -31,10 +30,11 @@ $font-size-base: 22px;
 
     h1 {
         color: $primary-color;
-        font-size: 2em;
+        font-size: 3em;
         margin-bottom: 1em;
         text-align: center;
         width: 100%; // S'assurer que le texte s'étend jusqu'au bord gauche
+        margin-top: 2em
     }
 
     .loading,

@@ -4,7 +4,7 @@ const Contact = () => {
   const [contact, setContact] = useState(null); // État pour les données de contact
 
   useEffect(() => {
-    fetch("http://localhost:1337/api/contacts", {
+    fetch(`${import.meta.env.VITE_BASE_URL}/api/contacts`, {
       headers: {
         Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
       },

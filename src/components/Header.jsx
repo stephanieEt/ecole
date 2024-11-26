@@ -9,6 +9,10 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false); // Ferme la navbar
+  };
+
   return (
     <header className="header">
       <div className="logo">
@@ -17,29 +21,43 @@ const Header = () => {
       <nav className={isOpen ? "nav open" : "nav"}>
         <ul className="nav-links">
           <li>
-            <NavLink to="/">Accueil</NavLink>
+            <NavLink to="/" onClick={closeMenu}>
+              Accueil
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/L'école">L'école</NavLink>
+            <NavLink to="/L'école" onClick={closeMenu}>
+              L'école
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/Infos">Infos pratiques</NavLink>
+            <NavLink to="/Infos" onClick={closeMenu}>
+              Infos pratiques
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/Equipe">Equipe éducative</NavLink>
+            <NavLink to="/Equipe" onClick={closeMenu}>
+              Equipe éducative
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/Associations">Associations</NavLink>
+            <NavLink to="/Associations" onClick={closeMenu}>
+              Associations
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/Contact">Contact</NavLink>
+            <NavLink to="/Contact" onClick={closeMenu}>
+              Contact
+            </NavLink>
           </li>
           <li>
-            <a href="#associations">Photos</a>
+            <NavLink to="/Photos" onClick={closeMenu}>
+              Photos
+            </NavLink>
           </li>
         </ul>
       </nav>
-      <div className="menu-icon" onClick={toggleMenu}>
+      <div className={`menu-icon ${isOpen ? "open" : ""}`} onClick={toggleMenu}>
         {isOpen ? <FaTimes /> : <FaBars />}
       </div>
     </header>

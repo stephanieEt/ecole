@@ -10,7 +10,7 @@ const Equipe = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1337/api/equipe-educatives",
+          `${import.meta.env.VITE_BASE_URL}/api/equipe-educatives`,
           {
             headers: {
               Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,

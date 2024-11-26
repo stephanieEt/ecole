@@ -7,6 +7,7 @@ import Infos from "./components/pages/Infos";
 import Equipe from "./components/pages/Equipe";
 import Association from "./components/pages/Association";
 import Contact from "./components/pages/Contact";
+import Photos from "./components/pages/Photos";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/Equipe" element={<Equipe />} />
             <Route path="/Associations" element={<Association />} />
             <Route path="/Contact" element={<Contact />} />
+            <Route path="/Photos" element={<Photos />} />
           </Routes>
         </div>
         <Footer />

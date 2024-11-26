@@ -22,6 +22,11 @@
         font-size: 2rem;
         z-index: 2000;
         cursor: pointer;
+        color: black;
+
+        &.open {
+            color: white; // Couleur pour la croix
+        }
     }
 
     .nav {

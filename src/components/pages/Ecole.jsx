@@ -9,11 +9,14 @@ const Ecole = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:1337/api/ecoles", {
-          headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
-          },
-        });
+        const response = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/api/ecoles`,
+          {
+            headers: {
+              Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
+            },
+          }
+        );
         setData(response.data.data);
         setLoading(false);
       } catch (err) {
