@@ -30,18 +30,14 @@ const Association = () => {
       <h1>Associations</h1>
       <ul>
         {data.map((item) => (
-          <li key={item.id}>
-            {/* Rendu du titre comme élément cliquable */}
+          <li
+            key={item.id}
+            className={selectedId === item.id ? "expanded" : ""} // Ajoute la classe "expanded" si sélectionné
+          >
             <button
-              onClick={() => setSelectedId(item.id)}
-              style={{
-                background: "none",
-                border: "none",
-                color: "blue",
-                textDecoration: "underline",
-                cursor: "pointer",
-                fontSize: "30px",
-              }}
+              onClick={() =>
+                setSelectedId(selectedId === item.id ? null : item.id)
+              } // Permet de replier si on reclique
             >
               {item.titre}
             </button>

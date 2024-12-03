@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { FaChevronDown, FaChevronUp, FaDownload } from "react-icons/fa"; // Ajouter les icônes modernes
 
 const Infos = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [openSections, setOpenSections] = useState({}); // Gérer l'ouverture des sections
+  const [openSections, setOpenSections] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,11 +32,10 @@ const Infos = () => {
     fetchData();
   }, []);
 
-  // Gestion de l'ouverture/fermeture des sections
   const toggleSection = (id) => {
     setOpenSections((prevState) => ({
       ...prevState,
-      [id]: !prevState[id], // Alterne entre ouvert et fermé
+      [id]: !prevState[id],
     }));
   };
 
@@ -46,43 +46,27 @@ const Infos = () => {
       {loading && <p className="loading">Chargement des informations...</p>}
       {error && <p className="error">Erreur : {error.message}</p>}
 
-      {/* Affichage des informations pratiques */}
       {data && data.length > 0 && (
         <div className="infos-content">
           {data.map((item) => (
             <div key={item.id} className="info-item">
               <div
                 className="info-header"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  cursor: "pointer",
-                }}
-                onClick={() => toggleSection(item.id)} // Gestion du clic
+                onClick={() => toggleSection(item.id)}
               >
-                <h3 style={{ margin: "0" }}>{item.titre}</h3>
-                <span
-                  style={{
-                    marginLeft: "auto",
-                    transform: openSections[item.id]
-                      ? "rotate(90deg)"
-                      : "rotate(0deg)",
-                    transition: "transform 0.3s",
-                  }}
-                >
-                  ▶
+                <h3>{item.titre}</h3>
+                <span className="icon">
+                  {openSections[item.id] ? <FaChevronUp /> : <FaChevronDown />}
                 </span>
               </div>
 
-              {/* Affichage conditionnel du texte */}
               {openSections[item.id] && (
-                <div className="info-content" style={{ marginTop: "10px" }}>
+                <div className="info-content">
                   {item.texte &&
                     item.texte.map((texteItem, index) => (
                       <p key={index}>{texteItem.children[0].text}</p>
                     ))}
 
-                  {/* Lien vers un document si disponible */}
                   {item.document && (
                     <a
                       href={`${import.meta.env.VITE_BASE_URL}${
@@ -90,9 +74,10 @@ const Infos = () => {
                       }`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ color: "blue", textDecoration: "underline" }}
+                      className="document-link"
                     >
-                      Voir le document
+                      <FaDownload style={{ marginRight: "8px" }} />
+                      Télécharger le document
                     </a>
                   )}
                 </div>

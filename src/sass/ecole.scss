@@ -26,9 +26,11 @@ $primary-color: #333;
     }
 
     h1 {
-        margin-bottom: 20px;
-        font-size: 3em; // Taille personnalisée pour le titre
-        color: #070000; // Mettre le texte en blanc pour contraster avec l'image
+        text-align: center;
+        font-size: 3em;
+        color: #040514;
+        margin-bottom: 50px; // Ajoute un espace entre le titre et le reste du contenu
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); // Ombre pour lisibilité
     }
 
     .text {

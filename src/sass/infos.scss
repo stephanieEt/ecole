@@ -1,80 +1,108 @@
-$primary-color:#070000;
-$secondary-color: #feca57;
+$primary-color: #070000;
+$secondary-color: #040514;
 $font-size-base: 22px;
 
 .infos-page {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center; // Centre le contenu horizontalement
-    min-height: 100vh; // Occupe toute la hauteur de la fenêtre
-    height: 100vh;
+    background-image: url('./assets/images/photoinfo1.jpg'); // Chemin de l'image de fond
+    background-size: cover; // L'image couvre toute la page
+    background-position: center; // Centrée horizontalement et verticalement
+    background-attachment: fixed; // Image fixe lors du défilement
+    min-height: 100vh; // Assure que la page couvre toute la hauteur de l'écran
+    display: flex; // Flexbox pour centrer le contenu
+    flex-direction: column; // Empile les enfants verticalement
+    align-items: center; // Centre horizontalement
+    justify-content: center; // Centre verticalement
     padding: 20px;
-    color: white; // Couleur du texte
-
-    // Pseudo-élément pour l'image de fond en fondu
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: url('./assets/images/photoinfo1.jpg'); // Remplace par ton chemin d'image
-        background-size: cover; // L'image couvre toute la zone
-        background-position: center; // Centrer l'image
-        background-repeat: no-repeat;
-        opacity: 0.7; // Opacité pour l'effet de fondu
-        z-index: -1; // Met l'image en arrière-plan
-    }
 
     h1 {
-        color: $primary-color;
-        font-size: 3em;
-        margin-bottom: 1em;
         text-align: center;
-        width: 100%; // S'assurer que le texte s'étend jusqu'au bord gauche
-        margin-top: 2em
-    }
-
-    .loading,
-    .error {
-        font-size: 1.1em;
-        color: darken($secondary-color, 10%);
-        margin-bottom: 20px;
-        text-align: left; // Aligner le texte à gauche pour les messages de chargement et d'erreur
+        font-size: 3em;
+        color: $secondary-color;
+        margin-bottom: 50px; // Ajoute un espace entre le titre et le reste du contenu
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); // Ombre pour lisibilité
     }
 
     .infos-content {
-        width: 100%;
-        max-width: 600px;
+        background-color: rgba(255, 255, 255, 0.8); // Ajoute une transparence
+        border-radius: 10px;
         padding: 20px;
+        width: 100%; // Prend toute la largeur disponible
+        max-width: 800px; // Limite la largeur pour une meilleure lisibilité
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); // Ombre autour du conteneur
 
         .info-item {
             margin-bottom: 20px;
-            padding-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            align-items: flex-start; // Aligner les éléments enfants à gauche
 
-            p {
-                font-size: $font-size-base;
-                line-height: 1.6;
-                color: darken($primary-color, 15%);
-                text-align: left; // Aligner le texte à gauche dans les paragraphes
+            .info-header {
+                display: inline-flex; // Alignement horizontal
+                align-items: center; // Centre verticalement
+                justify-content: center; // Centre horizontalement
+                cursor: pointer;
+                padding: 10px 0;
+
+                h3 {
+                    margin: 0;
+                    font-size: 1.5em;
+                    color: $primary-color;
+                    text-align: center;
+                }
+
+                .icon {
+                    margin-left: 10px; // Espace entre le titre et le chevron
+                    font-size: 1.5em;
+                    color: $secondary-color;
+                    transition: transform 0.3s ease;
+
+                    &.open {
+                        transform: rotate(180deg); // Rotation vers le haut
+                    }
+                }
+            }
+
+            .info-content {
+                margin-top: 10px;
+                padding: 15px;
+                border-left: 4px solid lighten($secondary-color, 20%);
+                border-radius: 5px;
+
+                p {
+                    font-size: $font-size-base;
+                    line-height: 1.6;
+                    color: $primary-color;
+                }
+
+                .document-link {
+                    display: inline-flex;
+                    align-items: center;
+                    color: $secondary-color;
+                    font-weight: bold;
+                    text-decoration: none;
+                    margin-top: 10px;
+
+                    svg {
+                        margin-right: 5px;
+                    }
+
+                    &:hover {
+                        text-decoration: underline;
+                        color: darken($secondary-color, 10%);
+                    }
+                }
             }
         }
     }
 
     @media (max-width: 768px) {
-        &::before {
-            background-size: cover; // S'assurer que l'image soit visible sans être coupée sur les petits écrans
-            background-position: center center;
+        h1 {
+            font-size: 1.8em;
         }
 
-        h1 {
-            font-size: 1.5em; // Réduire la taille du titre sur les petits écrans
+        .info-header h3 {
+            font-size: 1.2em;
+        }
+
+        .info-content p {
+            font-size: 1em;
         }
     }
 }

@@ -1,13 +1,11 @@
 .association-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* Centre verticalement */
-    align-items: center;
-    /* Centre horizontalement */
-
+    justify-content: center; // Centre verticalement
+    align-items: center; // Centre horizontalement
+    min-height: 100vh; // S'assure que le conteneur prend au moins toute la hauteur de la fenêtre
+    position: relative;
     padding: 20px;
-    /* Ajout d’un padding pour éviter que le contenu ne touche les bords sur les petits écrans */
 
     &::before {
         content: "";
@@ -18,27 +16,34 @@
         bottom: 0;
         background-image: url('./assets/images/photoassociation.jpg'); // Remplace par ton chemin d'image
         background-size: cover; // L'image couvre toute la zone
-        background-position: center; // Centrer l'image
-        opacity: 0.4; // Appliquer un fondu à l'image de fond
-        z-index: -1; // Met l'image en arrière-plan, sous le contenu
+        background-repeat: no-repeat; // Empêche la répétition de l'image
+        background-position: center; // Centre l'image
+        opacity: 0.4; // Applique un fondu à l'image de fond
+        z-index: -1; // Place l'image derrière le contenu
     }
 
     h1 {
-        font-size: 2.5rem;
-        /* Taille du titre */
-        margin-bottom: 13rem;
-        padding-top: 5rem
+        text-align: center;
+        font-size: 3em;
+        color: #040514;
+        margin-bottom: 50px; // Ajoute un espace entre le titre et le reste du contenu
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); // Ombre pour lisibilité
     }
 
     ul {
         list-style: none;
         padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center; // Centre horizontalement
 
         li {
             margin: 1rem 0;
+            text-align: center;
 
             button {
-                font-size: 1.2rem;
+                font-size: 1.5rem;
                 color: blue;
                 background: none;
                 border: none;
@@ -50,49 +55,16 @@
                 }
             }
 
-            p {
-                font-size: 1rem;
-                margin-top: 0.5rem;
-                color: #333;
-            }
-        }
-    }
-}
-
-/* Media Queries pour les écrans plus petits */
-@media (max-width: 768px) {
-    .association-container {
-        padding: 10px;
-
-        h1 {
-            font-size: 2rem;
-        }
-
-        ul li {
-            button {
-                font-size: 1rem;
+            .content {
+                max-height: 0; // Hauteur initiale fermée
+                overflow: hidden;
+                opacity: 0; // Contenu invisible
+                transition: max-height 0.3s ease, opacity 0.3s ease; // Animation fluide
             }
 
-            p {
-                font-size: 0.9rem;
-            }
-        }
-    }
-}
-
-@media (max-width: 480px) {
-    .association-container {
-        h1 {
-            font-size: 1.8rem;
-        }
-
-        ul li {
-            button {
-                font-size: 0.9rem;
-            }
-
-            p {
-                font-size: 0.8rem;
+            &.expanded .content {
+                max-height: 1000px;
+                opacity: 1;
             }
         }
     }

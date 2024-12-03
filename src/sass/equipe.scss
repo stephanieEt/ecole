@@ -23,9 +23,11 @@
     }
 
     h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: #0a0000; // Couleur du titre pour contraste avec le fond
+        text-align: center;
+        font-size: 3em;
+        color: #040514;
+        margin-bottom: 50px; // Ajoute un espace entre le titre et le reste du contenu
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); // Ombre pour lisibilité
     }
 
     .equipe-details {
