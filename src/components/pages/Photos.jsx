@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const Photos = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [openAlbums, setOpenAlbums] = useState({});
+  const [selectedPhoto, setSelectedPhoto] = useState(null); // État pour la photo sélectionnée
 
   useEffect(() => {
-    // Remplace cette URL par celle de ton API réelle
     const apiUrl = `${
       import.meta.env.VITE_BASE_URL
     }/api/photos?fields[0]=titre&populate[photos][fields][0]=name&populate[photos][fields][1]=url`;
@@ -15,7 +17,7 @@ const Photos = () => {
       try {
         const response = await fetch(apiUrl, {
           headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`, // Ajout du token dans les en-têtes
+            Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
             "Content-Type": "application/json",
           },
         });
@@ -38,42 +40,79 @@ const Photos = () => {
     fetchData();
   }, []);
 
+  const toggleAlbum = (id) => {
+    setOpenAlbums((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const openPhoto = (photoUrl) => {
+    setSelectedPhoto(photoUrl);
+  };
+
+  const closePhoto = () => {
+    setSelectedPhoto(null);
+  };
+
   if (loading) {
-    return <div>Chargement...</div>;
+    return <div className="loading">Chargement...</div>;
   }
 
   if (error) {
-    return <div>Erreur : {error}</div>;
+    return <div className="error">Erreur : {error}</div>;
   }
 
   return (
-    <div>
-      {data.map((album) => (
-        <div key={album.id} style={{ marginBottom: "20px" }}>
-          <h2>{album.titre}</h2>
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-            {album.photos.map((photo) => (
-              <div key={photo.id} style={{ textAlign: "center" }}>
-                <img
-                  src={`${import.meta.env.VITE_BASE_URL}${photo.url}`}
-                  alt={photo.name}
-                  style={{
-                    width: "150px",
-                    height: "150px",
-                    objectFit: "cover",
-                    borderRadius: "8px",
-                  }}
-                />
-                {/*
-                <p style={{ fontSize: "14px", marginTop: "5px" }}>
-                  {photo.name.split(".").slice(0, -1).join(".")}
-                </p>
-*/}
+    <div className="photos-page">
+      <h1 className="page-title">Galerie Photos</h1>
+      <div className="albums">
+        {data.map((album) => (
+          <div key={album.id} className="album">
+            <div className="album-header" onClick={() => toggleAlbum(album.id)}>
+              <h3>{album.titre}</h3>
+              <span className="chevron-icon">
+                {openAlbums[album.id] ? <FaChevronUp /> : <FaChevronDown />}
+              </span>
+            </div>
+
+            {openAlbums[album.id] && (
+              <div className="album-content">
+                {album.photos.map((photo) => (
+                  <div
+                    key={photo.id}
+                    className="photo-item"
+                    onClick={() =>
+                      openPhoto(`${import.meta.env.VITE_BASE_URL}${photo.url}`)
+                    }
+                  >
+                    <img
+                      src={`${import.meta.env.VITE_BASE_URL}${photo.url}`}
+                      alt={photo.name}
+                      className="photo-img"
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Modale pour afficher une photo en grand */}
+      {selectedPhoto && (
+        <div className="photo-modal" onClick={closePhoto}>
+          <div
+            className="photo-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img src={selectedPhoto} alt="Aperçu" />
+            <button className="close-button" onClick={closePhoto}>
+              ×
+            </button>
           </div>
         </div>
-      ))}
+      )}
     </div>
   );
 };
