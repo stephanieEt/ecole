@@ -1,8 +1,59 @@
-.container-footer {
+// Variables pour les couleurs
+$modal-bg-color: white;
+$modal-overlay-color: rgba(0, 0, 0, 0.5);
+$modal-close-btn-bg: #ff4d4f;
+$modal-close-btn-hover: #ff7875;
+
+footer {
     background-color: #cff8f0;
+}
 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $modal-overlay-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 
-    .nav-link:hover {
-        color: rgb(53, 99, 238)
+    .modal-content {
+        background: $modal-bg-color;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .close-button {
+            background: $modal-close-btn-bg;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+
+            &:hover {
+                background: $modal-close-btn-hover;
+            }
+        }
     }
 }

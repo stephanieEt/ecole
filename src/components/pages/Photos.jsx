@@ -11,7 +11,7 @@ const Photos = () => {
   useEffect(() => {
     const apiUrl = `${
       import.meta.env.VITE_BASE_URL
-    }/api/photos?fields[0]=titre&populate[photos][fields][0]=name&populate[photos][fields][1]=url`;
+    }/api/photos?fields[0]=titre&fields[1]=description&populate[photos][fields][0]=name&populate[photos][fields][1]=url`;
 
     const fetchData = async () => {
       try {
@@ -78,6 +78,9 @@ const Photos = () => {
 
             {openAlbums[album.id] && (
               <div className="album-content">
+                {album.description && (
+                  <p className="album-description">{album.description}</p>
+                )}
                 {album.photos.map((photo) => (
                   <div
                     key={photo.id}
